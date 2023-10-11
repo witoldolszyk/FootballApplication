@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { FixtureData } from '../models/fixture.interface';
 
@@ -46,7 +46,11 @@ export class TeamResultsDataService {
     if (cachedData) return of(cachedData);  
 
     return this.http.get<FixtureData>(`${this.apiUrl}/fixtures?season=${this.currentDate}&team=${league}`, { headers: this.headers }).pipe(
-      tap(data => this.setLocalStorage(storageKey, data))
+      tap(data => this.setLocalStorage(storageKey, data)),
+      catchError(error => {
+        console.error('Error fetching data:', error);
+        throw error;
+      })
     );
   }
 }

@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Standing, TeamStandings } from 'src/app/models/standing.interface';
 import { FootballLeagueResultsService } from 'src/app/services/football-league-results.service';
 import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -10,14 +10,15 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './country-details-table.component.html',
   styleUrls: ['./country-details-table.component.css']
 })
-export class CountryDetailsTableComponent {
+export class CountryDetailsTableComponent implements OnInit, OnDestroy{
   countryId: number = 0;
   standingsData$?: Observable<TeamStandings[]>; 
+  private routeSubscription?: Subscription;
 
   constructor(private route: ActivatedRoute, private footballLeageResultsService: FootballLeagueResultsService) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
+    this.routeSubscription = this.route.params.subscribe(params => {
       if (params['countryId']) {
         this.countryId= +params['countryId'];
         this.onSelectCountry(this.countryId);
@@ -32,4 +33,9 @@ export class CountryDetailsTableComponent {
     );
   }
 
+  ngOnDestroy(): void {
+    if (this.routeSubscription) {
+      this.routeSubscription.unsubscribe();
+    }
+  }
 }

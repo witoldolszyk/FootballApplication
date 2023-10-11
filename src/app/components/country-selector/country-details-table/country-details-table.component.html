@@ -1,5 +1,5 @@
 
-<table *ngIf="standingsData$ | async as standingsData">
+<table *ngIf="standingsData$ | async as standingsData; else loading">
     <thead>
       <tr>
         <th>Rank</th>
@@ -32,3 +32,9 @@
       </ng-container> 
     </tbody>
   </table>
+
+  <ng-template #loading>
+    <h1>
+    Loading...
+  </h1>
+  </ng-template>

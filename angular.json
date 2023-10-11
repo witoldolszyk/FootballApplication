@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "FootbalApplication": {
+    "FootballApplication": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "FootbalApplication:build:production"
+              "browserTarget": "FootballApplication:build:production"
             },
             "development": {
-              "browserTarget": "FootbalApplication:build:development"
+              "browserTarget": "FootballApplication:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +71,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "FootbalApplication:build"
+            "browserTarget": "FootballApplication:build"
           }
         },
         "test": {

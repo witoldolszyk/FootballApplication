@@ -25,10 +25,11 @@ export class CountryDetailsTableComponent {
     });
   }
 
- onSelectCountry(countryId: number): void {
-  this.standingsData$ = this.footballLeageResultsService.fetchLeagueResults(countryId).pipe(
-    map((data: Standing) => data.response[0].league.standings[0])
-  );
- }
+
+  onSelectCountry(countryId: number): void {
+    this.standingsData$ = this.footballLeageResultsService.fetchLeagueResults(countryId).pipe(
+      map((data: Standing) => data.response[0].league.standings[0])
+    );
+  }
 
 }

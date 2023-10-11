@@ -1,4 +1,4 @@
-<table *ngIf="matchResults$ | async as matchData">
+<table *ngIf="matchResults$ | async as matchData; else loading">
     <tbody>
      <ng-container  *ngFor="let club of matchData | slice:0:10">
         <tr>
@@ -17,5 +17,11 @@
       </ng-container> 
     </tbody>
 </table>
+
+<ng-template #loading>
+  <h1>
+  Loading...
+</h1>
+</ng-template>
 
 <button (click)="goBack()">Back</button>

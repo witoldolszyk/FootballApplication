@@ -31,7 +31,7 @@ export class TeamResultsDataService {
     const cachedTime: string | null = localStorage.getItem(`${key}_time`);
     const currentTime: number = new Date().getTime();
 
-    if (currentTime - (cachedTime ? Number(cachedTime) : 0) > 3 * 60 * 60 * 1000) {
+    if (currentTime - (cachedTime ? Number(cachedTime) : 0) > 12 * 60 * 60 * 1000) {
       localStorage.removeItem(key);
       return null;
     }

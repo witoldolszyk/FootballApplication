@@ -21,7 +21,7 @@ export class FootballLeagueResultsService {
   constructor(private http: HttpClient) { }
 
   private setLocalStorage(leagueId: number, data: Standing): void {
-    const expirationDate: Date = new Date(Date.now() + 3 * 60 * 60 * 1000);  
+    const expirationDate: Date = new Date(Date.now() + 12 * 60 * 60 * 1000);  
 
     const storageData: StoredData = {
       expiration: expirationDate.toISOString(),

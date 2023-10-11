@@ -1,0 +1,21 @@
+<table *ngIf="matchResults$ | async as matchData">
+    <tbody>
+     <ng-container  *ngFor="let club of matchData | slice:0:10">
+        <tr>
+          <td>
+            <img [src]="club.teams.home.logo" alt="{{ club.teams.home.name }} logo" width="30"> 
+          </td>
+          <td>{{ club.teams.home.name}}</td>
+          <td>{{ club.goals.home}}</td>
+          <td>-</td>
+          <td>{{ club.goals.away}}</td>
+          <td>{{ club.teams.away.name}}</td>
+          <td>
+            <img [src]="club.teams.away.logo" alt="{{ club.teams.home.name }} logo" width="30"> 
+          </td>
+        </tr>
+      </ng-container> 
+    </tbody>
+</table>
+
+<button (click)="goBack()">Back</button>

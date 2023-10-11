@@ -1,0 +1,34 @@
+
+<table *ngIf="standingsData$ | async as standingsData">
+    <thead>
+      <tr>
+        <th>Rank</th>
+        <th>Logo</th>
+        <th>Team Name</th>
+        <th>Games</th>
+        <th>Win</th>
+        <th>Lose</th>
+        <th>Draw</th>
+        <th>Goal Difference</th>
+        <th>Points</th>
+      </tr>
+    </thead>
+
+    <tbody>
+     <ng-container *ngFor="let teamStanding of standingsData">
+        <tr>
+          <td>{{ teamStanding.rank }}</td>
+          <td>
+            <img [src]="teamStanding.team.logo" alt="{{ teamStanding.team.name }} logo" width="30"> 
+          </td>
+          <td><a [routerLink]="['/team-detail', teamStanding.team.id]">{{ teamStanding.team.name }}</a></td>
+          <td>{{ teamStanding.all.played}}</td>
+          <td>{{ teamStanding.all.win }}</td>
+          <td>{{ teamStanding.all.lose}}</td>
+          <td>{{ teamStanding.all.draw}}</td>
+          <td>{{ teamStanding.goalsDiff }}</td>
+          <td>{{ teamStanding.points }}</td>
+        </tr>
+      </ng-container> 
+    </tbody>
+  </table>

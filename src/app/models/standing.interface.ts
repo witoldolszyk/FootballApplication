@@ -4,7 +4,7 @@ export interface Standing {
         league: string;
         season: string;
     };
-    errors: any[];  
+    errors: string[];  
     results: number;
     paging: {
         current: number;
@@ -35,7 +35,7 @@ export interface TeamStandings {
     group: string;
     form: string;
     status: string;
-    description: string | null;
+    description?: string;
     all: TeamPerformance;
     home: TeamPerformance;
     away: TeamPerformance;

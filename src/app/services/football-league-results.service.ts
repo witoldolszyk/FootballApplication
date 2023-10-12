@@ -12,7 +12,8 @@ import { StoredData } from '../models/stored.interface';
 export class FootballLeagueResultsService {
 
   readonly season: string = new Date().getFullYear().toString();
-  readonly apiUrl: string = 'https://v3.football.api-sports.io';
+  private readonly cacheExpirationTimeMs: number = 12 * 60 * 60 * 1000;
+  readonly apiUrl: string = environment.apiUrl;
   readonly headers: HttpHeaders = new HttpHeaders({
     'x-rapidapi-host': 'v3.football.api-sports.io',
     'x-rapidapi-key': environment.apiKey
@@ -21,7 +22,7 @@ export class FootballLeagueResultsService {
   constructor(private http: HttpClient) { }
 
   private setLocalStorage(leagueId: number, data: Standing): void {
-    const expirationDate: Date = new Date(Date.now() + 12 * 60 * 60 * 1000);  
+    const expirationDate: Date = new Date(Date.now() + this.cacheExpirationTimeMs);  
 
     const storageData: StoredData = {
       expiration: expirationDate.toISOString(),

@@ -1,0 +1,15 @@
+button {
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 10px;
+    transition: background-color 0.3s;
+}
+
+#englandSelect { background-color: #1F77B4; }
+#spainSelect { background-color: #FF7F0E; }
+#franceSelect { background-color: #2CA02C; }
+#germanySelect { background-color: #D62728; }
+#italySelect { background-color: #9467BD; }

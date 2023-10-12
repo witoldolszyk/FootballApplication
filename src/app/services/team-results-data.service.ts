@@ -11,7 +11,8 @@ import { FixtureData } from '../models/fixture.interface';
 export class TeamResultsDataService {
 
   readonly currentDate: string = new Date().getFullYear().toString();
-  readonly apiUrl: string = 'https://v3.football.api-sports.io';
+  private readonly cacheExpirationTimeMs: number = 12 * 60 * 60 * 1000;
+  readonly apiUrl: string = environment.apiUrl;
   readonly headers: HttpHeaders = new HttpHeaders({
     'x-rapidapi-host': 'v3.football.api-sports.io',
     'x-rapidapi-key': environment.apiKey
@@ -31,7 +32,7 @@ export class TeamResultsDataService {
     const cachedTime: string | null = localStorage.getItem(`${key}_time`);
     const currentTime: number = new Date().getTime();
 
-    if (currentTime - (cachedTime ? Number(cachedTime) : 0) > 12 * 60 * 60 * 1000) {
+    if (currentTime - (cachedTime ? Number(cachedTime) : 0) > this.cacheExpirationTimeMs) {
       localStorage.removeItem(key);
       return null;
     }

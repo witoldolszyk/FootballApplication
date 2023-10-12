@@ -4,7 +4,7 @@ export interface FixtureData {
       season: string;
       team: string;
     };
-    errors: string[] | null;
+    errors?: string[];
     results: number;
     paging: {
       current: number;
@@ -16,31 +16,31 @@ export interface FixtureData {
  export interface FixtureItem {
     fixture: {
       id: number;
-      referee: string | null;
+      referee?: string;
       timezone: string;
       date: string;
       timestamp: number;
       periods: {
-        first: number | null;
-        second: number | null;
+        first?: number;
+        second?: number;
       };
       venue: {
-        id: number | null;
-        name: string | null;
-        city: string | null;
+        id?: number;
+        name?: string;
+        city?: string;
       };
       status: {
         long: string;
         short: string;
-        elapsed: number | null;
+        elapsed?: number;
       };
     };
     league: {
       id: number;
       name: string;
       country: string;
-      logo: string | null;
-      flag: string | null;
+      logo?: string;
+      flag?: string;
       season: number;
       round: string;
     };
@@ -48,36 +48,36 @@ export interface FixtureData {
       home: {
         id: number;
         name: string;
-        logo: string | null;
-        winner: boolean | null;
+        logo?: string;
+        winner?: boolean;
       };
       away: {
         id: number;
         name: string;
-        logo: string | null;
-        winner: boolean | null;
+        logo?: string;
+        winner?: boolean;
       };
     };
     goals: {
-      home: number | null;
-      away: number | null;
+      home?: number;
+      away?: number;
     };
     score: {
       halftime: {
-        home: number | null;
-        away: number | null;
+        home?: number;
+        away?: number;
       };
       fulltime: {
-        home: number | null;
-        away: number | null;
+        home?: number;
+        away?: number;
       };
       extratime: {
-        home: number | null;
-        away: number | null;
+        home?: number;
+        away?: number;
       };
       penalty: {
-        home: number | null;
-        away: number | null;
+        home?: number;
+        away?: number;
       };
     };
   }

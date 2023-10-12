@@ -30,10 +30,10 @@ export class TeamResultsComponent implements OnInit{
     } else {
       console.error('Team ID not found in route parameters.');
     }
-    this.onSelectCountry()
+    this.getMatchResultsForTeam()
   }
 
-  onSelectCountry(): void {
+  getMatchResultsForTeam(): void {
     const currentDate = new Date();
     this.matchResults$ = this.teamResultDataService.fetchRoundsForSeason(this.teamId).pipe(
       map((data: FixtureData) => {

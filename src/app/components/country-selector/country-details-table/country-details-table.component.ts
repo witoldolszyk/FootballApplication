@@ -21,13 +21,13 @@ export class CountryDetailsTableComponent implements OnInit, OnDestroy{
     this.routeSubscription = this.route.params.subscribe(params => {
       if (params['countryId']) {
         this.countryId= +params['countryId'];
-        this.onSelectCountry(this.countryId);
+        this.getLeagueStandingsByCountryId(this.countryId);
       }
     });
   }
 
 
-  onSelectCountry(countryId: number): void {
+  getLeagueStandingsByCountryId(countryId: number): void {
     this.standingsData$ = this.footballLeageResultsService.fetchLeagueResults(countryId).pipe(
       map((data: Standing) => data.response[0].league.standings[0])
     );
